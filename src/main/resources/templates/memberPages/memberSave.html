@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{component/config :: config}"></th:block>
+</head>
+<body>
+<div th:replace="~{component/header :: header}"></div>
+<div th:replace="~{component/nav :: nav}"></div>
+
+<div class="container mt-5 mb-5">
+    <!-- 화면에 보여질 내용이 들어갈 부분 -->
+    <form action="/member/save" method="post" class="row g-3" enctype="multipart/form-data">
+        <input type="text" name="memberEmail" class="form-control" placeholder="이메일">
+        <input type="text" name="memberPassword" class="form-control" placeholder="비밀번호">
+        <input type="text" name="memberName" class="form-control" placeholder="이름">
+        <input type="text" name="memberMobile" class="form-control" placeholder="전화번호">
+        <input type="date" name="memberBirth" class="form-control" placeholder="생년월일">
+        <input type="file" name="memberProfile" class="form-control">
+        <input type="submit" value="회원가입" class="btn btn-primary">
+    </form>
+</div>
+
+<div th:replace="~{component/footer :: footer}"></div>
+
+</body>
+</html>
