@@ -3,6 +3,8 @@ package com.icia.member.Controller;
 import com.icia.member.dto.MemberDTO;
 import com.icia.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -66,5 +68,11 @@ public class MemberController {
         List<MemberDTO> memberDTOList = memberService.findAll();
         model.addAttribute("memberList",memberDTOList);
         return "memberPages/memberList";
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable("id") Long id){
+        memberService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

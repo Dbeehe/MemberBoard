@@ -36,4 +36,17 @@
 <div th:replace="~{component/footer :: footer}"></div>
 
 </body>
+<script>
+    const delete_fn = (id) => {
+        axios({
+            method:"delete",
+            url:`/member/${id}`
+        }).then(res => {
+            alert("삭제 성공");
+            location.href = "/member/memberlist";
+        }).catch(err => {
+            alert("삭제 실패");
+        });
+    }
+</script>
 </html>
