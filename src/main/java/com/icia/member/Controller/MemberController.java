@@ -53,4 +53,10 @@ public class MemberController {
     public String myPage() {
         return "memberPages/memberMain";
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("loginEmail");
+        return "redirect:/";
+    }
 }
