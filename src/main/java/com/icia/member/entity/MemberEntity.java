@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter(AccessLevel.PRIVATE)
 @Table(name = "member_table")
-public class MemberEntity {
+public class MemberEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

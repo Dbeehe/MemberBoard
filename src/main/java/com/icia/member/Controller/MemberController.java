@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/member")
@@ -58,5 +59,12 @@ public class MemberController {
     public String logout(HttpSession session){
         session.removeAttribute("loginEmail");
         return "redirect:/";
+    }
+
+    @GetMapping("/memberlist")
+    public String findAll(Model model){
+        List<MemberDTO> memberDTOList = memberService.findAll();
+        model.addAttribute("memberList",memberDTOList);
+        return "memberPages/memberList";
     }
 }
