@@ -52,6 +52,16 @@ public class MemberController {
         }
     }
 
+    @PostMapping("/dup-check")
+    public ResponseEntity emailCheck(@RequestBody MemberDTO memberDTO){
+        boolean result = memberService.emailCheck(memberDTO.getMemberEmail());
+        if(result){
+            return new ResponseEntity<>("사용가능", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("사용 불가능", HttpStatus.CONFLICT);
+        }
+    }
+
     @GetMapping("/mypage")
     public String myPage() {
         return "memberPages/memberMain";
@@ -75,4 +85,18 @@ public class MemberController {
         memberService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+

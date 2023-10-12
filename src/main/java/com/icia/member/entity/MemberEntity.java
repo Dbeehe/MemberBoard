@@ -34,6 +34,9 @@ public class MemberEntity extends BaseEntity {
     @Column
     private int fileAttached;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id") // DB에 생성될 참조 컬럼의 이름
+    private BoardEntity boardEntity; // 부모 엔티티 타입으로 정의
 
 
 
